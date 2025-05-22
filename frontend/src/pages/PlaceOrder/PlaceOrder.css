@@ -1,0 +1,32 @@
+.place-order {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-around;
+    gap: 3rem;
+}
+.place-order-left {
+    width: 100%;
+    max-width: max(30%, 31rem);
+}
+.place-order-left .title {
+    font-size: 2rem;
+    font-weight: 37.5rem;
+    margin-bottom: 3.1rem;
+}
+.place-order-left .multi-fields {
+    display: flex;
+    gap: 1rem;
+}
+.place-order-right {
+    width: 100%;
+    max-width: max(40%, 31rem);
+}
+@media (max-width: 900px) {
+    .place-order {
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+}

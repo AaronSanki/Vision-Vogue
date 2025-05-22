@@ -1,0 +1,25 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: black;
+    border-bottom: 1px solid rgb(38, 39, 39);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    height: 83px;
+    padding: 1rem 0.5rem;
+}
+.logo, .img-container, img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+.profile-image {
+    border-radius: 50%;
+}
+@media (max-width: 900px) {
+    .sidebar-option p {
+        display: none;
+    }
+}

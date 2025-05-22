@@ -1,0 +1,35 @@
+.img-container img {
+    height: 200px;
+    width: 573px;
+}
+.app-download {
+    text-align: center;
+    padding: 50px 20px;
+    font-family: "Poppins", sans-serif;
+}
+  
+.app-download p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.app-download .img-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.app-download .img-container img {
+    height: auto;
+    width: 100%;
+    max-width: 573px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.app-download .img-container img:hover {
+    transform: scale(1.05);
+}

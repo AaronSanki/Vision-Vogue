@@ -1,0 +1,11 @@
+.explore-frame-list {
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.explore-frame-list::-webkit-scrollbar {
+    display: none;
+}
+.explore-frames a {
+    color: inherit;
+    text-decoration: none;
+}

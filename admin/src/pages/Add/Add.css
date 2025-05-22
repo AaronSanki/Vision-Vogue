@@ -1,0 +1,56 @@
+.add {
+    width: 100%;
+    margin-left: max(3vw, 1rem);
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.add-img-upload {
+    margin-bottom: 0.5rem;
+    width: 90%;
+}
+.add-img-upload input {
+    cursor: pointer;
+}
+.add input, .add textarea {
+    width: 60vw;
+}
+.add-price input {
+    width: 10rem;
+}
+.add form {
+    gap: 1rem;
+}
+.add-img-upload img {
+    width: 20rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-top: .5rem;
+}
+.img-preview {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.add-frame-title, .add-frame-description {
+    width: max(40%, 18rem);
+}
+.add-category-price {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+.categories {
+    display: flex;
+    gap: 1rem;
+}
+/* .add-category {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+} */

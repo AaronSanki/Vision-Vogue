@@ -1,0 +1,106 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+}
+@media (max-height: 800px) {
+    .login-popup {
+        padding: 1rem !important;
+    }
+    .login-popup-container {
+        padding: 1.5rem 1rem !important;
+        gap: 15px !important;
+    }
+    .login-popup-contents-inputs {
+        gap: 15px !important;
+    }
+}
+
+.login-popup {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Reddit Mono", monospace !important;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow-y: auto;
+}
+.login-popup-container {
+    position: relative;
+    width: max(23vw, 30rem);
+    background-color: #151313;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    border: 2px solid rgb(44, 45, 45);
+    animation: fadeIn 0.5s;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.login-popup .X {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: .5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px;
+}
+.login-popup .X:hover {
+    background-color: #000;
+}
+.login-popup-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-popup-contents-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+}
+.login-popup-condition {
+    display: flex;
+    align-items: start;
+    gap: .5rem;
+    margin-top: -15px;
+    font-size: .85rem;
+}
+.login-popup-condition input {
+    margin-top: 5px;
+}
+.login-popup p span {
+    color: rgb(255, 61, 0);
+    cursor: pointer;
+}
+.password-type {
+    display: flex;
+    justify-content: flex-end;
+    opacity: .7;
+    font-size: .9rem;
+    cursor: pointer;
+}

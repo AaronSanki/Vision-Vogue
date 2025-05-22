@@ -1,0 +1,14 @@
+body{
+  font-family: "Sedan SC", serif !important;
+  background-color: black;
+  color: azure;
+  margin: 1rem;
+}
+.main-content {
+  display: flex;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}

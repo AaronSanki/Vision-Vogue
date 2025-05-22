@@ -1,0 +1,41 @@
+.edit {
+    width: 70%;
+    margin-left: max(3vw, 1rem);
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.edit input, .edit textarea {
+    width: 60vw;
+}
+.edit-price input {
+    width: 10rem;
+}
+.edit form {
+    gap: 1rem;
+}
+.edit-img-upload img {
+    width: 20rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.edit-frame-title, .edit-frame-description {
+    width: max(40%, 18rem);
+}
+.edit-category-price {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+.categories {
+    display: flex;
+    gap: 1rem;
+}
+/* .edit-category {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+} */

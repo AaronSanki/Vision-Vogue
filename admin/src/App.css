@@ -1,0 +1,12 @@
+li, p {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;    
+}
+.main-content {
+    margin-top: 82px;
+}
+.outlet-container {
+    margin-left: 20%;
+    padding: 1rem;
+}
