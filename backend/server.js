@@ -10,6 +10,8 @@ import dotenv from "dotenv"
 import ExpressError from "./utils/ExpressError.js"
 import MongoStore from "connect-mongo"
 //App config
+if(process.env.NODE_ENV !== "production")
+    dotenv.config()
 const app = express()
 const port = process.env.PORT || 3000
 const allowedOrigins = ["https://vision-vogue.onrender.com", "https://vision-vogue-admin.onrender.com"]
@@ -33,8 +35,6 @@ const store = MongoStore.create({
 store.on("error", (err)=>{
     console("ERROR IN MONGO SESSION STORE", err);
 })
-if(process.env.NODE_ENV !== "production")
-    dotenv.config()
 
 //Middleware
 app.use(express.json())
