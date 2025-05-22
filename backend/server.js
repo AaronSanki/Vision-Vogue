@@ -24,7 +24,7 @@ const corsOptions = {
     credentials: true
 }
 const store = MongoStore.create({
-    mongoUrl,
+    mongoUrl: process.env.MONGO_ATLAS_URL,
     crypto: {
         secret: process.env.SECRET
     },
