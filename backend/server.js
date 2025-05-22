@@ -8,6 +8,7 @@ import User from "./models/user.js"
 import session from "express-session"
 import dotenv from "dotenv"
 import ExpressError from "./utils/ExpressError.js"
+import MongoStore from "connect-mongo"
 //App config
 const app = express()
 const port = process.env.PORT || 3000
@@ -22,6 +23,16 @@ const corsOptions = {
     methods: "GET, POST, PUT, DELETE",
     credentials: true
 }
+const store = MongoStore.create({
+    mongoUrl,
+    crypto: {
+        secret: process.env.SECRET
+    },
+    touchAfter: 24 * 60 * 60
+})
+store.on("error", (err)=>{
+    console("ERROR IN MONGO SESSION STORE", err);
+})
 if(process.env.NODE_ENV !== "production")
     dotenv.config()
 
@@ -30,6 +41,7 @@ app.use(express.json())
 app.use(cors(corsOptions))
 
 app.use(session({
+    store,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
