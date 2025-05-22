@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { useApp, useUser, useCart } from './store/index.js';
 import SignIn from './components/SignIn/SignIn';
-import ScrollToTop from "./utils/scrollToTop.jsx";
+import ScrollToTop from "./utils/ScrollToTop.jsx";
 import { ToastContainer, Bounce, toast } from "react-toastify";
 import axios from "axios";
 import { useEffect, useState } from "react";
