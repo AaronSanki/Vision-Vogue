@@ -7,11 +7,18 @@ import localStrategy from "passport-local"
 import User from "./models/user.js"
 import session from "express-session"
 import dotenv from "dotenv"
+import ExpressError from "./utils/ExpressError.js"
 //App config
 const app = express()
 const port = process.env.PORT || 3000
+const allowedOrigins = ["https://vision-vogue.onrender.com", "https://vision-vogue-admin.onrender.com"]
 const corsOptions = {
-    origin: "https://vision-vogue.onrender.com",
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin))
+            callback(null, true);
+        else
+            callback(new ExpressError(400, "Not allowed by CORS"));
+    },
     methods: "GET, POST, PUT, DELETE",
     credentials: true
 }
@@ -59,5 +66,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server started on: http://localhost:${port}`)
+    console.log(`Server started`)
 })
