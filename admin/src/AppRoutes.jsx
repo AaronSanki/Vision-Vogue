@@ -7,7 +7,7 @@ import Order from "./pages/Order/Order"
 import Edit from "./pages/Edit/Edit"
 import {Bounce} from "react-toastify"
 export default function AppRoutes() {
-  const url = "http://localhost:3000"
+  const url = "https://vision-vogue-backend.onrender.com"
   const toastStyle = {
     position: "top-center",
     autoClose: 3000,
