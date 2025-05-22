@@ -4,7 +4,7 @@ import Rectangle from '../assets/FrameShapes/Rectangle.webp'
 import Round from '../assets/FrameShapes/Round.webp'
 import Square from '../assets/FrameShapes/Square.webp'
 import CatEye from '../assets/FrameShapes/CatEye.webp'
-import ClubMaster from '../assets/FrameShapes/ClubMaster.webp'
+import ClubMaster from '../assets/FrameShapes/Clubmaster.webp'
 import Oval from '../assets/FrameShapes/Oval.webp'
 
 export const frameShapes = [
