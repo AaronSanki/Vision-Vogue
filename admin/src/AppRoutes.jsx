@@ -7,7 +7,7 @@ import Order from "./pages/Order/Order"
 import Edit from "./pages/Edit/Edit"
 import {Bounce} from "react-toastify"
 export default function AppRoutes() {
-  const url = import.meta.env.BACKEND_URL
+  const url = import.meta.env.VITE_BACKEND_URL
   const toastStyle = {
     position: "top-center",
     autoClose: 3000,

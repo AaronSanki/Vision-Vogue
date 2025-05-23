@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { Bounce } from "react-toastify"
 const initialState = {
     showSignIn: false,
-    url: import.meta.env.BACKEND_URL,
+    url: import.meta.env.VITE_BACKEND_URL,
     toastStyle: {
         position: "top-center",
         autoClose: 3000,
