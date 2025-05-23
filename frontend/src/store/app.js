@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { Bounce } from "react-toastify"
 const initialState = {
     showSignIn: false,
-    url: "https://vision-vogue-backend.onrender.com",
+    url: process.env.BACKEND_URL,
     toastStyle: {
         position: "top-center",
         autoClose: 3000,

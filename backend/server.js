@@ -9,13 +9,14 @@ import session from "express-session"
 import dotenv from "dotenv"
 import ExpressError from "./utils/ExpressError.js"
 import MongoStore from "connect-mongo"
+
 //App config
 if(process.env.NODE_ENV !== "production")
     dotenv.config()
 const app = express()
 app.set('trust proxy', 1)
 const port = process.env.PORT || 3000
-const allowedOrigins = ["https://vision-vogue.onrender.com", "https://vision-vogue-admin.onrender.com"]
+const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL]
 const corsOptions = {
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin))
@@ -51,7 +52,7 @@ app.use(session({
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: "none",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         secure: process.env.NODE_ENV === "production"    
     }
 }))
