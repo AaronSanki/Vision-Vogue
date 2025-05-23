@@ -13,6 +13,7 @@ import MongoStore from "connect-mongo"
 if(process.env.NODE_ENV !== "production")
     dotenv.config()
 const app = express()
+app.set('trust proxy', 1)
 const port = process.env.PORT || 3000
 const allowedOrigins = ["https://vision-vogue.onrender.com", "https://vision-vogue-admin.onrender.com"]
 const corsOptions = {
@@ -23,7 +24,8 @@ const corsOptions = {
             callback(new ExpressError(400, "Not allowed by CORS"));
     },
     methods: "GET, POST, PUT, DELETE",
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
 }
 const store = MongoStore.create({
     mongoUrl: process.env.MONGO_ATLAS_URL,
