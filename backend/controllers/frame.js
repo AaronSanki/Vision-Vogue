@@ -49,9 +49,14 @@ export async function editFrame(req, res) {
     frame.shape = shape || frame.shape
     if(imageFilenames.length > 0) {
         await Promise.all(
-            frame.images.map(image => 
-                fs.promises.unlink(`uploads/${image}`)
-            )
+            frame.images.map(image => {
+                try {
+                    fs.promises.unlink(`uploads/${image}`)
+                }
+                catch{
+                    console.log("Image doesn't exist")
+                }
+            })
         )
         frame.images = imageFilenames
     }
