@@ -13,6 +13,7 @@ export default function Edit({url, toastStyle}) {
     const shape = ["Rectangle", "Square", "Round", "Geometric", "Aviator", "Cat Eye", "Club Master", "Oval"]
     const type = ["Full Rim", "Half Rim", "Rimless"]
     const [loading, setLoading] = useState(false)
+    const [hasClearedOldImages, setHasClearedOldImages] = useState(false)
     const {id} = useParams()
     const [frame, setFrame] = useState({
         title: "",
@@ -41,6 +42,16 @@ export default function Edit({url, toastStyle}) {
             ...frame,
             [name]: value
         })
+    }
+    function handleFileChange(event) {
+        const selectedFiles = Array.from(event.target.files)
+        if (!hasClearedOldImages) {
+            setImages(selectedFiles)
+            setHasClearedOldImages(true)
+            setFrame(prev => ({ ...prev, images: [] }))
+        }
+        else
+            setImages(prev => [...prev, ...selectedFiles])
     }
     async function handleSubmit(e) {
         e.preventDefault()
@@ -88,7 +99,7 @@ export default function Edit({url, toastStyle}) {
                             <img src={Upload} alt="Upload Placeholder" />
                         )}
                     </label>
-                    <input onChange={(event)=>setImages(Array.from(event.target.files))} type="file" id="images" name="images" hidden multiple/>
+                    <input onChange={handleFileChange} type="file" id="images" name="images" required/>
                 </div>
                 <div className="edit-frame-title flex-col">
                     <label htmlFor="title">Frame Title</label>
