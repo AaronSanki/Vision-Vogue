@@ -40,8 +40,8 @@ store.on("error", (err)=>{
 })
 
 //Middleware
-app.use(express.json())
 app.use(cors(corsOptions))
+app.use(express.json())
 app.use(session({
     store,
     secret: process.env.SECRET,
@@ -62,10 +62,6 @@ passport.use(new localStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-app.use((err, req, res, next) => {
-    const { status = 500, message = "Something went wrong" } = err;
-    res.status(status).json({ error: message });
-})
 
 //DB connection
 connectDB()
@@ -83,4 +79,9 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server started`)
+})
+
+app.use((err, req, res, next) => {
+    const { status = 500, message = "Something went wrong" } = err;
+    res.status(status).json({ error: message });
 })
