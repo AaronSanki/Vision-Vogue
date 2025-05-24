@@ -67,7 +67,7 @@ export default function Edit({url, toastStyle}) {
             formData.append("images", image)
         })
         setLoading(true)
-        const res = await axios.put(`${url}/api/frame/${id}`, formData)
+        const res = await axios.post(`${url}/api/frame/${id}`, formData)
         setLoading(false)
         if(res.data.success) {
             navigate("/list")

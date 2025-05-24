@@ -24,7 +24,7 @@ const corsOptions = {
         else
             callback(new ExpressError(400, "Not allowed by CORS"));
     },
-    methods: "GET, POST, PUT, DELETE, OPTIONS",
+    methods: "GET, POST, PUT, DELETE",
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }
