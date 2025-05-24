@@ -24,9 +24,11 @@ const corsOptions = {
         else
             callback(new ExpressError(400, "Not allowed by CORS"));
     },
-    methods: "GET, POST, PUT, DELETE",
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    exposedHeaders: ['Authorization'],
+    optionsSuccessStatus: 204
 }
 const store = MongoStore.create({
     mongoUrl: process.env.MONGO_ATLAS_URL,
@@ -40,8 +42,9 @@ store.on("error", (err)=>{
 })
 
 //Middleware
-app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
 app.use(express.json())
+app.use(cors(corsOptions))
 app.use(session({
     store,
     secret: process.env.SECRET,
@@ -53,7 +56,8 @@ app.use(session({
         httpOnly: true,
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         secure: process.env.NODE_ENV === "production"    
-    }
+    },
+    skip: (req) => req.method === 'OPTIONS'
 }))
 
 app.use(passport.initialize())
