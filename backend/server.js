@@ -42,7 +42,7 @@ store.on("error", (err)=>{
 })
 
 //Middleware
-app.options('*', cors(corsOptions))
+app.options('/api/*', cors(corsOptions))
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(session({
