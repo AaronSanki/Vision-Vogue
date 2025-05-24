@@ -24,7 +24,7 @@ const corsOptions = {
         else
             callback(new ExpressError(400, "Not allowed by CORS"));
     },
-    methods: "GET, POST, PUT, DELETE",
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }
@@ -42,7 +42,6 @@ store.on("error", (err)=>{
 //Middleware
 app.use(express.json())
 app.use(cors(corsOptions))
-app.options('/*', cors(corsOptions))
 app.use(session({
     store,
     secret: process.env.SECRET,
