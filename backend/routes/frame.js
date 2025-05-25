@@ -16,6 +16,6 @@ router
 router
     .route("/:id")
     .get(wrapAsync(fetchFrame))
-    .post(upload.array("images"), validateFrame, wrapAsync(editFrame))
+    .put(upload.array("images"), validateFrame, wrapAsync(editFrame))
 
 export default router

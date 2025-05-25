@@ -67,14 +67,26 @@ export default function Edit({url, toastStyle}) {
             formData.append("images", image)
         })
         setLoading(true)
-        const res = await axios.post(`${url}/api/frame/${id}`, formData)
-        setLoading(false)
-        if(res.data.success) {
-            navigate("/list")
-            toast.success('Frame updated Successfully', toastStyle)
+        try {
+            const res = await axios.put(`${url}/api/frame/${id}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            if(res.data.success) {
+                navigate("/list")
+                toast.success('Frame updated Successfully', toastStyle)
+            }
+            else {
+                toast.error(res.data.message, toastStyle)
+            }
         }
-        else {
-            toast.error(res.data.message, toastStyle)
+        catch (error) {
+          console.error('Edit error:', error);
+          toast.error(error.response?.data?.message || 'Update failed', toastStyle);
+        }
+        finally {
+          setLoading(false);
         }
     }
     if(loading)

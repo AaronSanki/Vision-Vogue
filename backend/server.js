@@ -20,7 +20,7 @@ const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL]
 const corsOptions = {
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin))
-            callback(null, true);
+            callback(null, origin);
         else
             callback(new ExpressError(400, "Not allowed by CORS"));
     },
@@ -42,9 +42,9 @@ store.on("error", (err)=>{
 })
 
 //Middleware
+app.use(cors(corsOptions))
 app.options('/api/*', cors(corsOptions))
 app.use(express.json())
-app.use(cors(corsOptions))
 app.use(session({
     store,
     secret: process.env.SECRET,
