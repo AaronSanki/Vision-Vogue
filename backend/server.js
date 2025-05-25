@@ -16,14 +16,9 @@ if(process.env.NODE_ENV !== "production")
 const app = express()
 app.set('trust proxy', 1)
 const port = process.env.PORT || 3000
-const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL]
+// const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL]
 const corsOptions = {
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin))
-            callback(null, origin);
-        else
-            callback(new ExpressError(400, "Not allowed by CORS"));
-    },
+    origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL],
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
@@ -57,7 +52,6 @@ app.use(session({
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         secure: process.env.NODE_ENV === "production"    
     },
-    skip: (req) => req.method === 'OPTIONS'
 }))
 
 app.use(passport.initialize())

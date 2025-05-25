@@ -2,7 +2,7 @@ import express from 'express'
 import { addFrame, listFrames, removeFrame, editFrame, fetchFrame } from '../controllers/frame.js'
 import {upload, validateFrame} from '../middleware/index.js'
 import wrapAsync from '../utils/wrapAsync.js'
-import cors from "cors"
+
 const router = express.Router()
 
 router
