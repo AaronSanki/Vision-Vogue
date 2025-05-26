@@ -78,9 +78,10 @@ export default function MyOrders() {
         <div className="my-orders">
             <h2>My Orders</h2>
             <div className="container">
-                {data.map((order, index) => {
-                    if(data.length === 0)
-                        return <p>No Orders yet :(</p>
+                {
+                data.length === 0 
+                ? (<p>No Orders yet :(</p>)
+                : (data.map((order, index) => {
                     return (
                         <div key={index}>
                             <div className="my-order">
@@ -162,7 +163,7 @@ export default function MyOrders() {
                             </form>
                         </div>
                     )
-                })}
+                }))}
             </div>
         </div>
     )
