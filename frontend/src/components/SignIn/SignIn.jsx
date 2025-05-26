@@ -47,7 +47,8 @@ export default function SignIn() {
             }
         }
         catch(err) {
-            toast.error("Invalid Username or Password", toastStyle)
+            let message = (currState === 'Login') ? "Invalid Username or Password" : "this username is taken"
+            toast.error(message, toastStyle)
         }
     }
     return (
