@@ -68,13 +68,13 @@ export default function Edit({url, toastStyle}) {
         })
         setLoading(true)
         try {
+            console.log(`${url}/api/frame/${id}`)
             const res = await axios.put(`${url}/api/frame/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
                 withCredentials: true
             })
-            console.log(`${url}/api/frame/${id}`)
             if(res.data.success) {
                 navigate("/list")
                 toast.success('Frame updated Successfully', toastStyle)
