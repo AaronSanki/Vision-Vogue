@@ -47,7 +47,7 @@ export default function SignIn() {
             }
         }
         catch(err) {
-            let message = (currState === 'Login') ? "Invalid Username or Password" : "this username is taken"
+            let message = (currState === 'Login') ? "Invalid Username or Password" : "This username is taken"
             toast.error(message, toastStyle)
         }
     }
