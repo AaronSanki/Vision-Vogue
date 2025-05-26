@@ -78,12 +78,10 @@ export default function MyOrders() {
         <div className="my-orders">
             <h2>My Orders</h2>
             <div className="container">
+                <hr />
                 {
                 data.length === 0 
-                ? (<>
-                    <hr />
-                    <p className="text-center">No Orders yet :(</p>
-                </>)
+                ? (<p className="text-center">No Orders yet :(</p>)
                 : (data.map((order, index) => {
                     return (
                         <div key={index}>
