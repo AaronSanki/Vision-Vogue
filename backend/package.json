@@ -35,7 +35,7 @@
   "homepage": "https://github.com/AaronSanki/Vision-Vogue#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
-    "cloudinary": "^2.6.1",
+    "cloudinary": "^1.41.3",
     "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
