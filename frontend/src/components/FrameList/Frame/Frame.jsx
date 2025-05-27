@@ -36,7 +36,7 @@ export default function Frame({frame}) {
                             <Star size={16} style={{ marginLeft: "0.3rem" }} />
                         </span>
                     )}
-                    <img src={url+"/images/"+image} alt="Frame" className="card-img-top"/>
+                    <img src={image.url} alt="Frame" className="card-img-top"/>
                     {
                     !cartItem
                         ? user && <div className="add d-flex justify-content-end" onClick={(e)=>{e.stopPropagation(); handleCart("add")}}><Plus /></div>

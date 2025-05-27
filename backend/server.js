@@ -1,22 +1,17 @@
 import express from "express"
 import cors from "cors"
-import {connectDB} from './config/db.js'
+import {connectDB} from './config/index.js'
 import {frameRouter, userRouter, cartRouter, orderRouter} from "./routes/index.js"
 import passport from "passport"
 import localStrategy from "passport-local"
 import User from "./models/user.js"
 import session from "express-session"
-import dotenv from "dotenv"
-import ExpressError from "./utils/ExpressError.js"
 import MongoStore from "connect-mongo"
 
 //App config
-if(process.env.NODE_ENV !== "production")
-    dotenv.config()
 const app = express()
 app.set('trust proxy', 1)
 const port = process.env.PORT || 3000
-// const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL]
 const corsOptions = {
     origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL],
     methods: "GET, POST, PUT, DELETE, OPTIONS",

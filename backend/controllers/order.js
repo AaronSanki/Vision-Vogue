@@ -2,11 +2,9 @@ import {Order, User} from "../models/index.js"
 import Razorpay from "razorpay"
 import crypto from "crypto"
 
-const id = process.env.RAZORPAY_API_KEY_ID
-const secret = process.env.RAZORPAY_API_KEY_SECRET
 const razorpay = new Razorpay({
-    key_id: id,
-    key_secret: secret
+    key_id: process.env.RAZORPAY_API_KEY_ID,
+    key_secret: process.env.RAZORPAY_API_KEY_SECRET
 })
 
 //Place User Order for frontend

@@ -39,13 +39,11 @@ export default function List({url, toastStyle}) {
         return <Spinner/>
     return (
         <div className="list add flex-col">
-            <h2>Frames</h2>
+            <h2 className="text-center">Frames</h2>
             <div className="list-table">
                 <div className="list-table-format title">
                     <b>Image</b>
                     <b>Title</b>
-                    {/* <b>Shape</b>
-                    <b>Type</b> */}
                     <b>Company</b>
                     <b>Price</b>
                     <b>Action</b>
@@ -54,7 +52,7 @@ export default function List({url, toastStyle}) {
                     list.map((frame, index) => {
                     return (
                         <div key = {index} className="list-table-format">
-                            <img src={`${url}/images/${frame.images[0]}`} alt="" />
+                            <img src={frame.images[0].url} alt="" />
                             <p>{frame.title}</p>
                             <p>{frame.company}</p>
                             <p>&#x20B9;{frame.price}</p>

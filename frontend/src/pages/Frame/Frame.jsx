@@ -50,6 +50,7 @@ export default function Frame() {
         }
         return null
     }
+    
     async function handleCart() {
         setLoading(true)
         const res = await axios.post(`${url}/api/cart/add`, {frameId: frame._id, quantity, price: quantity*frame.price}, {withCredentials: true})
@@ -81,7 +82,7 @@ export default function Frame() {
                     </button>
                 </div>
                 <div className="images">
-                    <img src={`${url}/images/${frame.images[currentImageIndex]}`} alt="Frame"/>
+                    <img src={frame.images[currentImageIndex].url} alt="Frame"/>
                     <p>{currentImageIndex + 1} / {frame.images.length}</p>
                 </div>
                 <div className="move">

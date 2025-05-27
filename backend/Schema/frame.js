@@ -9,7 +9,12 @@ const frameSchema = Joi.object ({
     company: Joi.string()
         .required(),
 
-    image: Joi.array().items(Joi.string().required()),
+    images: Joi.array().items(Joi.object({
+        url: Joi.string()
+            .required(),
+        filename: Joi.string()
+            .required()
+    })),
 
     price: Joi.number()
         .min(0)

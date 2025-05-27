@@ -106,14 +106,14 @@ export default function Edit({url, toastStyle}) {
                                 ))
                             ) : (
                                 frame.images.map((img, i) => (
-                                    <img key={i} src={`${url}/images/${img}`} alt="uploaded" style={{ width: "15rem", borderRadius: "1rem", marginRight: '1rem' }} />
+                                    <img key={i} src={img.url} alt="uploaded" style={{ width: "15rem", borderRadius: "1rem", marginRight: '1rem' }} />
                                 ))
                             )
                         ) : (
                             <img src={Upload} alt="Upload Placeholder" />
                         )}
                     </label>
-                    <input onChange={handleFileChange} type="file" id="images" name="images" required/>
+                    <input onChange={handleFileChange} type="file" id="images" name="images"/>
                 </div>
                 <div className="edit-frame-title flex-col">
                     <label htmlFor="title">Frame Title</label>

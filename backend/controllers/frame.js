@@ -1,13 +1,13 @@
-import {Frame} from '../models/index.js'
-import fs from 'fs'
+import { Frame } from '../models/index.js'
+import { cloudinary } from '../config/index.js'
 
 //Create Frame
 export async function addFrame(req, res) {
-    let imageFilenames = req.files.map(file => `${file.filename}`);
+    let images = req.files.map(file => ({url: file.path, filename: file.filename}))
     const {title, price, company, info, type, shape} = req.body
     const frame = new Frame({
         title,
-        images: imageFilenames,
+        images,
         price,
         company,
         info,
@@ -37,7 +37,7 @@ export async function listFrames(req, res) {
 export async function editFrame(req, res) {
     const {id} = req.params
     const {title, price, company, info, type, shape} = req.body
-    const imageFilenames = req.files ? req.files.map(file => `${file.filename}`) : []
+    const images = req.files ? req.files.map(file => ({url: file.path, filename: file.filename})) : []
     const frame = await Frame.findById(id)
     if (!frame)
         return res.status(404).json({ success: false, message: "Frame not found" })
@@ -47,18 +47,18 @@ export async function editFrame(req, res) {
     frame.info = info || frame.info
     frame.type = type || frame.type
     frame.shape = shape || frame.shape
-    if(imageFilenames.length > 0) {
+    if(images.length > 0) {
         await Promise.all(
-            frame.images.map(image => {
+            frame.images.map(async (image) => {
                 try {
-                    fs.promises.unlink(`uploads/${image}`)
+                    await cloudinary.uploader.destroy(image.filename)
                 }
                 catch{
-                    console.log("Image doesn't exist")
+                    console.log("Couldn't delete image")
                 }
             })
         )
-        frame.images = imageFilenames
+        frame.images = images
     }
     await frame.save()
     res.status(200).json({success: true, message: "Frame updated successfully"})
@@ -69,9 +69,16 @@ export async function removeFrame(req, res) {
     const frame = await Frame.findById(req.body._id)
     if (!frame)
         return res.status(404).json({ success: false, message: "Frame not found" })
-    frame.images.forEach((image) => {
-        fs.unlink(`uploads/${image}`, () => {})
-    })
+    await Promise.all(
+        frame.images.map(async (image) => {
+            try {
+                await cloudinary.uploader.destroy(image.filename)
+            }
+            catch{
+                console.log("Couldn't delete image")
+            }
+        })
+    )
     await Frame.findByIdAndDelete(req.body._id)
     res.status(200).json({ success: true, message: "Frame removed successfully" })
 }

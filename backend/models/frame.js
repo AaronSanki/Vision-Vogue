@@ -6,8 +6,16 @@ const frameModel = new Schema({
         required: true,
     },
     images: {
-        type: [String],
-        required: true,
+        type: [{
+            url: {
+                type: String,
+                required: true,
+            },
+            filename: {
+                type: String,
+                required: true
+            }
+        }],
     },
     price: {
         type: Number,
