@@ -4,7 +4,6 @@ import { Star } from 'lucide-react';
 import { Plus, Minus } from 'lucide-react';
 import { useApp, useCart, useUser } from "../../../store/index";
 import {useNavigate} from "react-router-dom"
-import Spinner from "../../Spinner/Spinner";
 import axios from "axios"
 export default function Frame({frame}) {
     const {_id, title, images, price} = frame;
@@ -23,6 +22,7 @@ export default function Frame({frame}) {
             addToCart(frame)
         else
             removeFromCart(frame)
+        setLoading(true)
         const res = await axios.post(`${url}/api/cart/${mode}`, {frameId: frame._id, quantity: 1, price: frame.price}, {withCredentials: true})
         setLoading(false)
     }
@@ -42,7 +42,7 @@ export default function Frame({frame}) {
                         ? user && <div className="add d-flex justify-content-end" onClick={(e)=>{e.stopPropagation(); handleCart("add")}}><Plus /></div>
                         : user && <span onClick = {(e) => e.stopPropagation()} className="frame-item-counter">
                             <button className="remove-red" onClick={()=>handleCart("remove")}><Minus size={20}/></button>
-                            <span>{loading ? <Spinner spinStyle = {{height: "1rem"}} style={{height: "1rem", width: "1rem"}}/> : cartItem.quantity}</span>
+                            <span>{loading ? (<div style = {{height: "1rem", width: "1rem"}} className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>) : cartItem.quantity}</span>
                             <button className="add-green" onClick={()=>handleCart("add")}><Plus size={20}/></button>
                         </span>
                     }
