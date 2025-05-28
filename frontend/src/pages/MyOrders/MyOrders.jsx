@@ -94,7 +94,7 @@ export default function MyOrders() {
                                     else
                                         return frame.title+" X "+quantity+", "
                                 })}</p>
-                                <p>&#x20B9;{order.amount}.00</p>
+                                <p>&#x20B9;{order.amount.toFixed(2)}</p>
                                 <p>Frames: {order.frames.length}</p>
                                 <p><span>&#x25cf;</span> <b>{order.status}</b></p>
                                 <OrangeButton onClick={fetchOrders} title="Track Order"/>

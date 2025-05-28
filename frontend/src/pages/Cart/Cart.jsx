@@ -38,7 +38,7 @@ export default function Cart() {
                         return (
                             <div key = {index}>
                                 <div className="cart-items-title cart-items-item">
-                                    <img src={url+"/images/"+frame.images[0]} alt="Frame"/>
+                                    <img src={frame.images[0].url} alt="Frame"/>
                                     <p>{frame.title}</p>
                                     <p>&#x20B9;{frame.price}</p>
                                     <p>{quantity}</p>
